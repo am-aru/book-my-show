@@ -1,6 +1,12 @@
 import React from "react";
-import { Button, Checkbox, Form, Input } from "antd";
+import { Button, Form, Input } from "antd";
+import { LoginUser } from "../../api/users";
 function Login() {
+  const onFinish = async (values) => {
+    const response = await LoginUser(values);
+    localStorage.setItem('token' , response.token);
+    console.log(response);
+  }
   return (
     <header className="App-header">
       <main className="main-area mw-500 text-center px-3">
@@ -8,7 +14,9 @@ function Login() {
           <h1>Login to BookMyShow</h1>
         </section>
         <section className="right-section">
-          <Form layout="vertical">
+          <Form layout="vertical"
+          onFinish={onFinish}
+        >
             <Form.Item
               label="Email"
               htmlFor="email"

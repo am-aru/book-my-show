@@ -1,6 +1,6 @@
 const User = require("../models/userModel");
 const bcrypt = require("bcrypt");
-
+const jwt = require("jsonwebtoken");
 async function createUser(req, res) {
   try {
     const user = await User.findOne({ email: req?.body?.email });
@@ -43,9 +43,13 @@ async function isUser(req, res) {
       res.send({
         success: false,
         message: "invalid password",
+        token : token
       });
       return;
     }
+    const token = jwt.sign({userId : user._id }, "Scaler_Bms" ,{
+      expiresIn : "1d",
+    })
     res.send({
       success: true,
       message: "logged in",
