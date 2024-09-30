@@ -15,7 +15,8 @@ try{
     await newUser.save();
    res.send({
     success : true ,
-    message : "user registered successfully"
+    message : "user registered successfully",
+    data : newUser,
    });
 }catch(err){
     res.status(404).json({ message : err.message})

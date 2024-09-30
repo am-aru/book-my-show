@@ -12,6 +12,6 @@ const userRouter = require('./routes/userRoutes');
 app.use(express.json);
 app.use("/api/users" , userRouter);
 
-app.listen(8882 , ()=>{
+app.listen(8082 , ()=>{
     console.log("server is listening");
 })
