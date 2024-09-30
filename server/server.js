@@ -7,6 +7,11 @@ require('dotenv').config();
 const connectDB = require('./config/db');
 
 connectDB();
+
+const userRouter = require('./routes/userRoutes');
+app.use(express.json);
+app.use("/api/users" , userRouter);
+
 app.listen(8882 , ()=>{
     console.log("server is listening");
 })
