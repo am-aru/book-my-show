@@ -3,6 +3,7 @@ const User = require ('../models/userModels');
 
 const userRouter = express.Router();
 userRouter.post('/register' , async(req , res) => {
+    console.log("123");
 try{
    const userExists = await User.findOne({email : req.body.email }) ;
    if(userExists){
@@ -11,7 +12,9 @@ try{
         message: "user exists already"
     });
 }
+
     const newUser = new User(req.body);
+    console.log({newUser})
     await newUser.save();
    res.send({
     success : true ,
@@ -19,6 +22,7 @@ try{
     data : newUser,
    });
 }catch(err){
+    console.log(err);
     res.status(404).json({ message : err.message})
 }
 });

@@ -1,7 +1,10 @@
 const express = require('express');
+var cors = require('cors')
 
 
 const app = express();
+
+app.use(cors())
 require('dotenv').config();
 
 const connectDB = require('./config/db');
@@ -14,4 +17,4 @@ app.use("/api/users" , userRouter);
 
 app.listen(8082 , ()=>{
     console.log("server is listening");
-})
+});
