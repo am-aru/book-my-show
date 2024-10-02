@@ -44,15 +44,15 @@ const Login = () => {
             </Form.Item>
             <Form.Item
               label="Password"
-              htmlFor="Password"
-              name="Password"
+              htmlFor="password"
+              name="password"
               className="d-block"
               rules={[{ required: true, message: "Password is required" }]}
             >
               <Input
                 type="Password"
                 id="Password"
-                name="Password"
+                name="password"
                 placeholder="Enter your Password"
               />
             </Form.Item>

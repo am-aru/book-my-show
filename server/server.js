@@ -12,7 +12,7 @@ const connectDB = require('./config/db');
 connectDB();
 
 const userRouter = require('./routes/userRoutes');
-app.use(express.json);
+app.use(express.json());
 app.use("/api/users" , userRouter);
 
 app.listen(8082 , ()=>{

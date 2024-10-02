@@ -29,15 +29,15 @@ const Register = () => {
           <Form layout="vertical" onFinish={ onFinish } onFinishFailed={onFinishFailed}>
           <Form.Item
               label="Name"
-              htmlFor="Name"
-              name="Name"
+              htmlFor="name"
+              name="name"
               className="d-block"
               rules={[{ required: true, message: "Name is required" }]}
             >
               <Input
                 type="Name"
-                id="Name"
-                name="Name"
+                id="name"
+                name="name"
                 placeholder="Enter your Name"
               />
             </Form.Item>
@@ -59,15 +59,15 @@ const Register = () => {
             </Form.Item>
             <Form.Item
               label="Password"
-              htmlFor="Password"
-              name="Password"
+              htmlFor="password"
+              name="password"
               className="d-block"
               rules={[{ required: true, message: "Password is required" }]}
             >
               <Input
                 type="Password"
                 id="Password"
-                name="Password"
+                name="password"
                 placeholder="Set Password"
               />
             </Form.Item>
