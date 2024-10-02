@@ -11,9 +11,10 @@ const connectDB = require('./config/db');
 
 connectDB();
 
-const userRouter = require('./routes/userRoutes');
+// const userRouter = require('./routes/userRoutes');
+const router  = require('./routes');
 app.use(express.json());
-app.use("/api/users" , userRouter);
+app.use("/api" , router);
 
 app.listen(8082 , ()=>{
     console.log("server is listening");

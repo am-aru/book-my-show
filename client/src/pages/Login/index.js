@@ -11,6 +11,7 @@ const Login = () => {
       const response = await loginUser(value);
       if (response.success) {
         message.success(response.message);
+        localStorage.setItem("token" , response.data);
         navigate("/");
       } else {
         message.error(response.message);
@@ -44,7 +45,7 @@ const Login = () => {
             </Form.Item>
             <Form.Item
               label="Password"
-              htmlFor="password"
+              htmlFor="Password"
               name="password"
               className="d-block"
               rules={[{ required: true, message: "Password is required" }]}
