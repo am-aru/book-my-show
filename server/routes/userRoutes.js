@@ -60,4 +60,11 @@ userRouter.post("/login", async (req, res) => {
   }
 });
 
+userRouter.get("/current" , async(req , res) => {
+    console.log(req.url,eq.method);
+    console.log(req.headers["authorization"]);
+    res.send({ success:true , message: "you are authenticated"})
+
+})
+
 module.exports = userRouter;
