@@ -22,7 +22,7 @@ function App() {
         <Route path="/register" element= {<Register />} />
       </Routes>
       </BrowserRouter>
-      </Provider>
+      </Provider> 
     </div>
   )
 }
