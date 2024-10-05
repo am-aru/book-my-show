@@ -7,6 +7,7 @@ const userSlice = createSlice({
   },
   reducers: {
     SetUser: (state, action) => {
+        console.log("log in user slice" , action)
       state.user = action.payload;
     },
   },

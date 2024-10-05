@@ -9,7 +9,7 @@ const auth = (req , res , next) => {
          console.log("verified token");
          req.body.userId = verifiedToken.userId;
 
-
+      next();
     }catch(err){
         res.status(404).send({ message: "invalid token "})
     }

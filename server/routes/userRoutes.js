@@ -48,7 +48,7 @@ userRouter.post("/login", async (req, res) => {
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
       expiresIn: "1 day",
     });
-    console.log(token);
+    // console.log(token);
 
     res.send({
       success: true,
@@ -62,12 +62,18 @@ userRouter.post("/login", async (req, res) => {
 });
 
 userRouter.get("/get-current-user" ,auth, async(req , res) => {
-    // console.log(req.url,req.method);
+    console.log(req.body);
     // console.log(req.headers["authorization"]);
-
-    const user = await user.findById(req.body.userId).select("-password");
-    res.send({ success:true , message: "you are authenticated", data : user})
-
+    try{
+      
+      const user = await User.findById(req.body.userId).select("-password");
+      console.log(user);
+      res.send({ success:true , message: "you are authenticated", data : user})
+       
+    }catch(err){
+      console.log(err);
+    }
+   
 })
 
 module.exports = userRouter;

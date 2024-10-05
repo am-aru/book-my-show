@@ -13,7 +13,9 @@ import { SetUser } from "../redux/userSlice";
 import { message, Layout, Menu } from "antd";
 
 function ProtectedRoute({ children }) {
-  const { user } = useSelector((state) => state.users || {});
+  const  { user } = useSelector((state) => state.user);
+  const  { loading } = useSelector((state) => state.loaders);
+//   console.log(user,loading);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -62,15 +64,17 @@ function ProtectedRoute({ children }) {
   ];
 
   useEffect(() => {
+
     const getValidUser = async () => {
+
       try {
         dispatch(ShowLoading());
         const response = await getCurrentUser();
-        console.log(response);
+
         dispatch(SetUser(response.data));
         dispatch(HideLoading());
       } catch (err) {
-        console.log(err);
+       
         dispatch(HideLoading());
         message.error(err.message);
       }
@@ -85,7 +89,7 @@ function ProtectedRoute({ children }) {
   const { Header, Footer, Sider, Content } = Layout;
 
   return (
-    user && (
+    !loading ? (
       <>
         <Layout>
           <Header
@@ -109,7 +113,7 @@ function ProtectedRoute({ children }) {
           </div>
         </Layout>
       </>
-    )
+    ) : <>Loading...</>
   );
 }
 
